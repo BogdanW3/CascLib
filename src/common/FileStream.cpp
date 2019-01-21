@@ -53,8 +53,7 @@ static bool BaseFile_Create(TFileStream * pStream)
 {
 #ifdef PLATFORM_WINDOWS
     {
-        DWORD dwWriteShare = (pStream->dwFlags & STREAM_FLAG_WRITE_SHARE) ? FILE_SHARE_WRITE : 0;
-
+		DWORD dwWriteShare = FILE_SHARE_WRITE;
         pStream->Base.File.hFile = CreateFile(pStream->szFileName,
                                               GENERIC_READ | GENERIC_WRITE,
                                               dwWriteShare | FILE_SHARE_READ,
@@ -95,8 +94,7 @@ static bool BaseFile_Open(TFileStream * pStream, const TCHAR * szFileName, DWORD
     {
         ULARGE_INTEGER FileSize;
         DWORD dwWriteAccess = (dwStreamFlags & STREAM_FLAG_READ_ONLY) ? 0 : FILE_WRITE_DATA | FILE_APPEND_DATA | FILE_WRITE_ATTRIBUTES;
-        DWORD dwWriteShare = (dwStreamFlags & STREAM_FLAG_WRITE_SHARE) ? FILE_SHARE_WRITE : 0;
-
+		DWORD dwWriteShare = FILE_SHARE_WRITE;
         // Open the file
         pStream->Base.File.hFile = CreateFile(szFileName,
                                               FILE_READ_DATA | FILE_READ_ATTRIBUTES | dwWriteAccess,

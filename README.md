@@ -1,4 +1,1 @@
-CascLib
-=======
-
-An open-source implementation of library for reading CASC storage from Blizzard games since 2014
+This is a fork of [CascLib](https://github.com/ladislav-zezula/CascLib) with patches to support concurrent runs with Warcraft III.
